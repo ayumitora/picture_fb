@@ -6,21 +6,33 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width">
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
+    <header id="header">
+      <div class="logo">
+        <%= image_tag 'flogo_rgb_hex-brc-site-250.png', :size => '54x54' %>
+      </div>
+      <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
+      <% end %>
 
-    <% if logged_in? %>
-      <%=link_to "PROFILE", user_path(current_user.id) %>
-      <%= link_to "LOGOUT" , session_path(current_user.id), method: :delete %>
-    <% else %>
-      <%= link_to "SIGN UP", new_user_path %>
-      <%= link_to "LOGIN", new_session_path %>
-    <% end %>
-
+      <ul>
+        <% if logged_in? %>
+          <li><%=link_to "PROFILE", user_path(current_user.id) %></li>
+          <li><%= link_to "LOGOUT" , session_path(current_user.id), method: :delete %></li>
+        <% else %>
+          <li><%= link_to "SIGN UP", new_user_path %></li>
+          <li><%= link_to "LOGIN", new_session_path %></li>
+        <% end %>
+      </ul>
+    </header>
     <%= yield %>
+    <footer>
+      <p>あらいあゆみ</p>
+      <p>2019.4</p>
+    </footer>
   </body>
+
 </html>
