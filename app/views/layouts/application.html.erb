@@ -14,9 +14,6 @@
       <div class="logo">
         <%= image_tag 'flogo_rgb_hex-brc-site-250.png', :size => '54x54' %>
       </div>
-      <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
 
       <ul>
         <% if logged_in? %>
@@ -28,6 +25,9 @@
         <% end %>
       </ul>
     </header>
+      <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+  　<% end %>
     <%= yield %>
     <footer>
       <p>あらいあゆみ</p>
